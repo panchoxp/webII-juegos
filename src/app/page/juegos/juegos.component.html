@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-md-4" *ngFor="let item of juegos">
+        <div class="thumbnail">
+            <a [routerLink]="['/juegosDetalles', item.id]">
+                <img [src]="item.imagen" alt="Imagen del juego" style="width:100%">
+            </a>
+            <div class="caption">
+                <p>Título: {{item.titulo}}</p>
+                <p>Precio: {{item.precio}}</p>
+            </div>
+        </div>
+    </div>
+</div>
