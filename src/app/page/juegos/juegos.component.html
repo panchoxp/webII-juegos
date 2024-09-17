@@ -1,12 +1,36 @@
-<div class="row">
-    <div class="col-md-4" *ngFor="let item of juegos">
-        <div class="thumbnail">
-            <a [routerLink]="['/juegosDetalles', item.id]">
-                <img [src]="item.imagen" alt="Imagen del juego" style="width:100%">
-            </a>
-            <div class="caption">
-                <p>Título: {{item.titulo}}</p>
-                <p>Precio: {{item.precio}}</p>
+<div class="container-fluid mt-4">
+    <div class="row">
+        <!-- Columna de filtros a la izquierda -->
+        <div class="col-md-3">
+            <div class="filters-container">
+                <h3 class="filters-title">Filtros</h3>
+
+                <div class="form-group">
+                    <label for="rangoSelect" class="form-label">Filtrar por rango de precio:</label>
+                    <select id="rangoSelect" class="form-control" [(ngModel)]="rangoSeleccionado">
+                        <option value="">Todos</option>
+                        <option value="0-10">0 - 10</option>
+                        <option value="10-20">10-20</option>
+                        <!-- Agrega más opciones según sea necesario -->
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Columna de juegos a la derecha -->
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-4" *ngFor="let item of juegosFiltrados">
+                    <div class="thumbnail">
+                        <a [routerLink]="['/juegosDetalles', item.id]">
+                            <img [src]="item.imagen" alt="Imagen del juego" style="width:100%">
+                        </a>
+                        <div class="caption">
+                            <p>Título: {{item.titulo}}</p>
+                            <p>Precio: {{item.precio}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
